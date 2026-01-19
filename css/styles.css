@@ -9,8 +9,8 @@
 :root {
     --primary-color: #cc8b86;      /* Dusty Rose */
     --secondary-color: #f9eae1;    /* Linen */
-    --accent-color: #7d4f50;       /* Clay Soil accent */
-    --text-color: #d1be9c;            /* Khaki beige for text */
+    --accent-color: #d1be9c;       /* Khaki Beige accent */
+    --text-color: #7d4f50;            /* Clay Soil for text */
     --text-secondary: #aa998f;     /* Dusty Taupe for captions */
     --bg-color: #f4f4f4;           /* Light background */
     --white: #ffffff;
