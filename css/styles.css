@@ -7,11 +7,11 @@
    CSS Variables (Color Scheme)
    ========================= */
 :root {
-    --primary-color: #cc8b86;      /* Dusty Rose */
-    --secondary-color: #f9eae1;    /* Linen */
-    --accent-color: #d1be9c;       /* Khaki Beige accent */
-    --text-color: #7d4f50;            /* Clay Soil for text */
-    --text-secondary: #aa998f;     /* Dusty Taupe for captions */
+    --primary-color: #f4f1e2;      /* Lucky Dice */
+    --secondary-color: #d8ebf9;    /* Something Blue */
+    --accent-color: #d7d4b1;       /* Walking Vinnie accent */
+    --text-color: #513229;            /* Mother Earth for text */
+    --text-secondary: #fce6b7;     /* The Bay for captions */
     --bg-color: #f4f4f4;           /* Light background */
     --white: #ffffff;
 }
