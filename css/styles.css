@@ -7,12 +7,12 @@
    CSS Variables (Color Scheme)
    ========================= */
 :root {
-    --primary-color: #fce6b7;      /* The Bay */
-    --secondary-color: #d8ebf9;    /* Something Blue */
-    --accent-color: #d7d4b1;       /* Walking Vinnie accent */
-    --text-color: #513229;            /* Mother Earth for text */
-    --text-secondary: #513229;     /* Mother Earth for captions */
-    --bg-color: #f4f4f4;           /* Light background */
+    --primary-color: #513229;
+    --secondary-color: #d8ebf9;   
+    --accent-color: #fce6b7;     
+    --text-color: #3f271f;          
+    --text-secondary: #6b5a4f;  
+    --bg-color: #f4f1e2;          
     --white: #ffffff;
 }
 
@@ -26,7 +26,7 @@
 }
 
 html {
-    scroll-behavior: smooth;       /* Smooth scrolling for anchor links */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -39,7 +39,6 @@ body {
 /* =========================
    Header & Navigation
    ========================= */
-/* Style semantic tags directly - no classes needed! */
 header {
     background-color: var(--primary-color);
     color: white;
@@ -63,9 +62,9 @@ header p {
 nav {
     background-color: #3d1461;
     padding: 0.75rem;
-    display: flex;              /* Make nav a flex container */
-    justify-content: center;    /* Center the ul inside nav */
-    position: sticky;           /* Stick to top when scrolling */
+    display: flex;              
+    justify-content: center;    
+    position: sticky;         
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -84,7 +83,7 @@ nav ul {
 }
 
 nav li {
-    list-style: none;           /* Extra insurance - remove bullets */
+    list-style: none;         
 }
 
 nav a {
@@ -102,9 +101,8 @@ nav a:hover {
 /* =========================
    Main Content
    ========================= */
-/* Style main semantic tag directly */
 main {
-    max-width: 900px;          /* Don't get too wide */
+    max-width: 900px;        
     margin: 2rem auto;         /* Center horizontally */
     padding: 0 1rem;           /* Space on sides for mobile */
 }
