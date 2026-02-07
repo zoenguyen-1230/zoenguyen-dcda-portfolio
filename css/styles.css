@@ -168,6 +168,41 @@ main section li {
     margin-bottom: 0.5rem;
 }
 
+/* =========================
+   Tableau Responsive Embed Fix
+   ========================= */
+
+.tableau-section {
+  width: 100%;
+}
+
+.tableau-embed {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.tableau-embed .tableauPlaceholder {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.tableau-embed object.tableauViz {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.tableau-embed iframe,
+.tableau-embed embed {
+  width: 100% !important;
+  max-width: 100% !important;
+  border: none;
+  display: block;
+}
+
+main section {
+  overflow-x: hidden;
+}
+
 /* Figure captions */
 .viz-container figcaption {
     font-style: italic;
