@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Visualization | Zoe Nguyen</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+        <nav>
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lab02.html">AI Evaluation</a></li>
+            <li><a href="lab03.html" class="active">Visualization Critique</a></li>
+            <li><a href="lab04.html">Tableau Viz</a></li>
+            <li><a href="lab05.html">Lab 5</a></li>
+            <li><a href="lab06.html">Hometown Map</a></li>
+            </ul>
+        </nav>
+    <header>
+        <h1>Tableau Visualization</h1>
+        <p>Zoe Nguyen | DCDA 40833 Skills Portfolio | Spring 2026</p>
+    </header>
+
+    <main>
+        <section>
+        <div class='tableauPlaceholder' id='viz1770497299958' style='position: relative'><noscript><a href='#'><img alt='Immigrant Population Patterns and County Economic Outcomes in California ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Zo&#47;ZoeNguyenDCDALab4_TableauViz&#47;Story&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ZoeNguyenDCDALab4_TableauViz&#47;Story' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Zo&#47;ZoeNguyenDCDALab4_TableauViz&#47;Story&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1770497299958');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1016px';vizElement.style.height='991px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+        </section>
+
+        <section>
+            <h2>Reflection and Analysis</h2>
+            <p>For this lab, I used a county-level California dataset from Kaggle focusing on foreign-born population characteristics and socioeconomic indicators. The dataset included demographic composition, birthplace regions, income, broadband access, and employment metrics across all 58 California counties.</p>
+            
+            <h3>Data Preparation</h3>
+            <p>I’m already interested in culture, migration, and regional inequality, so the topic felt familiar and meaningful to explore visually. The dataset itself uploaded into Tableau Public smoothly since it was already in CSV format, but I did run into issues getting the county map to generate correctly. Tableau did not immediately recognize the county field because the values were formatted as “County Name, California.” I had to create a calculated field to strip the state text and then manually assign the geographic role as County. I also used the Edit Locations feature to confirm the map should be matched within California. Another preparation step involved correcting aggregation defaults. Tableau initially summed certain percentage and median-value fields, so I changed those measures to Average to ensure accurate representation.</p>
+
+            <h3>Design Choices</h3>
+            <p>I built my dashboard around three connected views: a filled county map, a stacked birthplace-composition bar chart, and a scatterplot comparing foreign-born share and median income. I centered everything on county as the main dimension because the dataset is aggregated at that level and Tableau maps handle counties well. My anchor metric was percent foreign-born population, since that is the core theme of the dataset and provides a consistent comparison across all charts.</p>
+            
+            <p>For the second visualization, I chose the stacked birthplace composition chart because I wanted to go beyond totals and show structure, not just how many immigrants live in a county, but where they come from. Using Measure Values and Measure Names to stack multiple birthplace-region percentages into one bar felt like a useful way to add complexity without losing readability.</p> 
+        
+            <p>For the scatterplot, I compared foreign-born percentage with median income and added a dominant-origin-region color grouping. That design choice came from wanting to see whether the relationship between immigration share and income might differ depending on origin composition rather than assuming one overall pattern.</p>
+
+            <h3>Expected Patterns</h3>
+            <p>Before building the visuals, I expected counties in Southern California like Los Angeles County or Bay Area counties including Santa Clara County and San Francisco County to show higher foreign-born population shares, based on general knowledge of immigration patterns in California. The map confirmed this understanding: the coastal and major metro counties appeared darkest. I also expected inland and more rural counties to show lower percentages, which the visualization also confirmed.</p>
+
+            <p>I expected a generally positive relationship between immigrant share and median income because many high-immigration counties are also major economic centers. In the scatter plot, counties like Santa Clara and San Mateo appeared in the high-immigrant, high-income quadrant, which matched my expectations and prior understanding of Silicon Valley and Bay Area economies.</p>
+
+            <h3>Surprises/Outliers</h3>
+            <p>One major surprise was that the dataset itself was incomplete. Tableau indicated that approximately 18 counties were missing, including Orange County and Santa Cruz County, both of which I expected to have relatively large foreign-born populations. This absence immediately stood out because it contradicts general demographic knowledge of California. As a result, the map and subsequent analyses do not fully represent the state’s immigrant distribution..</p>
+
+            <p>This gap significantly affects interpretation. For example, Southern California appears less immigrant-heavy than expected because Orange County is missing, and the Central Coast feels underrepresented without Santa Cruz. This made it clear that the visualization reflects the dataset’s limitations rather than the full reality. Another surprise was the amount of variation among mid-range counties in the scatter plot — counties with similar immigrant shares showed noticeably different income levels, suggesting that other factors beyond immigrant concentration are influencing outcomes.</p>
+
+            <h3>Questions for Further Investigation</h3>
+            <p>The missing counties raise important follow-up questions. Why are these counties absent from the dataset? Was it because of to data unavailability, filtering decisions, or errors during compilation? How would the inclusion of counties like Orange or Santa Cruz counties change the observed patterns in the map and scatter plot? Beyond completeness, additional questions include whether cost of living or industry composition explains income variation among counties with similar immigrant shares, and how education or occupation data might shift these relationships.</p>
+
+            <h3>Tool Evaluation</h3>
+            <p>From my experience, Tableau Public is especially strong for geographic and multi-measure visualization. The county mapping, stacked measure charts, and built-in trend lines made it possible to build layered analysis without coding. Cross-filter dashboards were also easier to implement than I expected. The main limitations I encountered were around geographic field recognition and aggregation defaults. Tableau is powerful, but it assumes you understand how measures should aggregate. Compared to coding tools, it offers less statistical control, but compared to spreadsheets, it is far more capable for interactive visualizations. For this dataset and story, Tableau is the right tool to explore the dataset and visualize it for a better understanding of the dataset.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Zoe Nguyen</p>
+    </footer>
+</body>
+</html>
