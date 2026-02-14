@@ -468,24 +468,18 @@ footer a:hover {
 
 .carousel-inner {
     display: flex;
-    width: 100%;
+    flex-wrap: nowrap;
     transition: transform 0.5s ease-in-out;
-    will-change: transform;
 }
 
 .carousel-slide {
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
     flex: 0 0 100%;
-    box-sizing: border-box;
+    width: 100%;
 }
 
 .carousel-slide img {
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    max-height: 500px;
+    height: 450px;
     object-fit: cover;
     display: block;
 }
@@ -569,7 +563,7 @@ footer a:hover {
     }
 
     .carousel-slide img {
-        max-height: 350px;
+        height: 320px;
     }
 
     .carousel-btn {
@@ -600,7 +594,7 @@ footer a:hover {
 
 @media (max-width: 480px) {
     .carousel-slide img {
-        max-height: 280px;
+        height: 250px;
     }
 
     .carousel-btn {
