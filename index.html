@@ -65,6 +65,54 @@ reflects my interests in travel, culture, photography, and nostalgic storytellin
             
         </section>
 
+        <!-- TCU Memories Carousel Section -->
+        <section id="tcu-memories">
+            <h2>TCU Memories</h2>
+            <p>Some of my favorite moments with friends at TCU:</p>
+            
+            <div class="carousel" role="region" aria-label="TCU photo gallery" aria-roledescription="carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 of 5">
+                        <img src="images/tcu-friends-1.jpg" alt="Friends and I at at a VSA audition for our annual talent show">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
+                        <img src="images/tcu-friends-2.jpg" alt="Snow day fun with friends on campus">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
+                        <img src="images/tcu-friends-3.jpg" alt="Celebrating Christmas Tree Lighting on campus">
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
+                        <img src="images/tcu-friends-4.jpg" alt="My Roxo team posing for our team's headshot">
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
+                        <img src="images/tcu-friends-5.jpg" alt="Friends and I at a TCU football game, cheering in the stadium">
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                    <span aria-hidden="true">&#10094;</span>
+                </button>
+                <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                    <span aria-hidden="true">&#10095;</span>
+                </button>
+                
+                <!-- Dot Navigation -->
+                <div class="carousel-dots" role="tablist" aria-label="Slide navigation">
+                    <button class="carousel-dot active" role="tab" aria-selected="true" aria-label="Go to slide 1" data-slide="0"></button>
+                    <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 2" data-slide="1"></button>
+                    <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 3" data-slide="2"></button>
+                    <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 4" data-slide="3"></button>
+                    <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Go to slide 5" data-slide="4"></button>
+                </div>
+            </div>
+        </section>
+
         <!-- Portfolio Section: Links to all lab pages -->
          <!-- This portfolio is structured to grow over time as I complete more assignments.
         I designed it with flexibility in mind so I can add future projects, visuals,
@@ -132,5 +180,76 @@ in a digital portfolio.</p>
         <p><a href="https://zoenguyen-1230.github.io/zoenguyen-dcda-portfolio/">View Repository on GitHub</a></p>
         <p>&copy; 2026 Zoe Nguyen | DCDA 40833 | TCU</p>
     </footer>
+
+    <!-- Carousel JavaScript -->
+    <script>
+    (function() {
+        const carousel = document.querySelector('.carousel');
+        if (!carousel) return;
+
+        const inner = carousel.querySelector('.carousel-inner');
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const prevBtn = carousel.querySelector('.carousel-btn-prev');
+        const nextBtn = carousel.querySelector('.carousel-btn-next');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+
+        // Go to a specific slide
+        function goToSlide(index) {
+            // Wrap around
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+
+            currentIndex = index;
+            inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Update active slide
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+                slide.setAttribute('aria-hidden', i !== currentIndex);
+            });
+
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+                dot.setAttribute('aria-selected', i === currentIndex);
+            });
+        }
+
+        // Event listeners for buttons
+        prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+        // Event listeners for dots
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => goToSlide(i));
+        });
+
+        // Keyboard navigation (arrow keys)
+        document.addEventListener('keydown', (e) => {
+            // Only respond when carousel or its children are focused, or no specific focus
+            const active = document.activeElement;
+            const carouselFocused = carousel.contains(active) || 
+                                    active === document.body || 
+                                    active === document.documentElement;
+            
+            if (carouselFocused) {
+                if (e.key === 'ArrowLeft') {
+                    goToSlide(currentIndex - 1);
+                    e.preventDefault();
+                } else if (e.key === 'ArrowRight') {
+                    goToSlide(currentIndex + 1);
+                    e.preventDefault();
+                }
+            }
+        });
+
+        // Initialize: set aria-hidden on non-active slides
+        slides.forEach((slide, i) => {
+            slide.setAttribute('aria-hidden', i !== 0);
+        });
+    })();
+    </script>
 </body>
 </html>
