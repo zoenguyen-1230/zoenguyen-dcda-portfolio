@@ -209,6 +209,21 @@ main section {
     margin-top: 0.5rem;
 }
 
+/* Embedded Map Iframe */
+.viz-container iframe {
+    width: 100%;
+    min-height: 500px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .viz-container iframe {
+        min-height: 400px;
+    }
+}
+
 /* Grid layout for multiple visualizations */
 .viz-grid {
     display: grid;

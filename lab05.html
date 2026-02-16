@@ -52,13 +52,33 @@
         <section>
 
             <h2>Experiment B: Python Code Generation</h2>
-            <h3>Code</h3>
-            <p>Paragraph</p>
-            <p>Paragraph</p>
+            <h3>San Francisco Restaurant Inspection Scores Map</h3>
+            <p>For Experiment B, I used <strong>Gemini 2.5 Flash</strong> feature within <strong>Google Colab</strong> to create an interactive map visualization of San Francisco restaurant inspection scores. I got the dataset from the City of San Francisco profile on Kaggle. The map displays inspection data from the SF Department of Public Health, showing restaurant locations color-coded by their health inspection scores.</p>
+
+            <p>I worked with Gemini to generate Python code using <strong>Folium</strong> and <strong>Pandas</strong> for data processing. The visualization includes marker clustering for better performance with large datasets and a heat map layer to show the geographic distribution of inspection scores across the city.</p>
+
+            <h3>Interactive Map</h3>
+            <p>Explore the map below to see restaurant inspection scores across San Francisco. Click on markers to view restaurant details and their inspection scores:</p>
+            
+            <div class="viz-container">
+                <iframe 
+                    src="restaurant_inspection_map.html" 
+                    title="San Francisco Restaurant Inspection Scores Map"
+                    style="width: 100%; height: 600px; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                    loading="lazy">
+                </iframe>
+                <figcaption>Interactive map showing San Francisco restaurant inspection scores. Green markers indicate higher scores, while red markers indicate lower scores.</figcaption>
+            </div>
 
             <h3>Documentation</h3>
-            <p>Paragraph</p>
-            <p>Paragraph</p>
+            <p>The map was generated using Python with the Folium library. Key features include:</p>
+            <ul>
+                <li><strong>Marker Clustering:</strong> Groups nearby restaurants for cleaner visualization at lower zoom levels</li>
+                <li><strong>Heat Map Layer:</strong> Shows density and distribution of inspection scores</li>
+                <li><strong>Color-Coded Markers:</strong> Visual indication of inspection score quality</li>
+                <li><strong>Interactive Popups:</strong> Click markers to see restaurant name, address, and inspection score</li>
+            </ul>
+            <p>The data comes from the San Francisco Department of Public Health's restaurant inspection database, which is publicly available through the city's open data portal.</p>
         </section>
     </main>
 
