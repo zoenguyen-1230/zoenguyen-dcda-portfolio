@@ -51,11 +51,22 @@
 
         <section>
 
-            <h2>Experiment B: Python Code Generation</h2>
+            <h2>Experiment B: Python Map Visualization (Using Google Colab + Gemini)</h2>
             <h3>San Francisco Restaurant Inspection Scores Map</h3>
-            <p>For Experiment B, I used <strong>Gemini 2.5 Flash</strong> feature within <strong>Google Colab</strong> to create an interactive map visualization of San Francisco restaurant inspection scores. I got the dataset from the City of San Francisco profile on Kaggle. The map displays inspection data from the SF Department of Public Health, showing restaurant locations color-coded by their health inspection scores.</p>
+             <p>
+                <a href="San_Francisco_Restaurant_Inspection_Score_Map.ipynb" download>
+                    Download my Google Colab notebook (.ipynb)
+                </a>
+                &nbsp;|&nbsp;
+                <a href="restaurant-scores-lives-standard.csv" download>
+                    Download the dataset (.csv)
+                </a>
+            </p>
+            <p>Deliverables: I uploaded my Colab notebook (.ipynb), the original dataset (.csv), and a HTML file of the final interactive map view to my portfolio repository</p>
 
-            <p>I worked with Gemini to generate Python code using <strong>Folium</strong> and <strong>Pandas</strong> for data processing. The visualization includes marker clustering for better performance with large datasets and a heat map layer to show the geographic distribution of inspection scores across the city.</p>
+            <p>For Experiment B, I used <strong>Google Colab with Gemini 2.5 Flash (embedded in Colab)</strong> as an AI coding collaborator to create an interactive map visualization of San Francisco restaurant inspection scores. The dataset comes from the City of San Francisco (found on Kaggle) and includes inspection records, scores, risk categories, and coordinates. My goal was to <strong>create a map</strong>of the latest inspection per restaurant, color markers by score (red → yellow → green), and include detailed popups (restaurant name, address, score, date, and risk breakdown). I also wanted a heatmap layer for low scores and toggleable views showing “Best scores” vs “Worst scores.”</p>
+
+            <p>The first AI-generated version worked but revealed practical issues when tested: some popups displayed NaN values, some rows with no values were plotted, and the map was visually cluttered due to heavy marker overlap. I used follow-up prompts to clean the dataset (i.e., dropping missing coordinates and scores), replace missing text fields with “Unknown,” and modify the map to reduce clutter using marker limits, clustering, smaller radius scaling, and transparency tuning. I validated each change by rerunning cells and visually checking the output map rather than assuming correctness from code alone.</p>
 
             <h3>Interactive Map</h3>
             <p>Explore the map below to see restaurant inspection scores across San Francisco. Click on markers to view restaurant details and their inspection scores:</p>
@@ -71,14 +82,19 @@
             </div>
 
             <h3>Documentation</h3>
-            <p>The map was generated using Python with the Folium library. Key features include:</p>
+            <p>Original AI prompts I used:</p>
             <ul>
-                <li><strong>Marker Clustering:</strong> Groups nearby restaurants for cleaner visualization at lower zoom levels</li>
-                <li><strong>Heat Map Layer:</strong> Shows density and distribution of inspection scores</li>
-                <li><strong>Color-Coded Markers:</strong> Visual indication of inspection score quality</li>
-                <li><strong>Interactive Popups:</strong> Click markers to see restaurant name, address, and inspection score</li>
+                <li><strong>Initial build prompt:</strong> “This is a dataset from the City of San Francisco of restaurants' inspection score in the city. help me build a map visualization of the latest inspection per restaurant, colored by inspection score (red → yellow → green). Popup shows name, address, score, date, and risk breakdown. Include a heatmap layer for low scores, and show toggle views of “Best scores” vs “Worst scores” as separate layers.”</li>
+                <li><strong>Cleaning prompt (NaNs + invalid points):</strong> “The map is looking good, but I'm seeing NaN values in the popup and some points shouldn’t be plotted. Please modify my code so that rows with NaN latitude, longitude, or inspection_score are excluded, and NaN text does not appear in popups or tooltips, missing fields are replaced with “Unknown” instead of NaN in labels. Show me the cleaned pandas filtering step and the safer popup formatting step. Keep everything else the same and explain each change briefly.”</li>
+                <li><strong>Decluttering prompt (overlapping markers):</strong> “The map is too visually cluttered because there are too many markers overlapping. Please refactor my code to reduce clutter while keeping it analytically useful. Update it to keep only the latest inspection per restaurant, limit to the top N most recent or lowest-score inspections (config variable like MAX_MARKERS), keep MarkerCluster but improve readability, reduce marker radius scaling so circles overlap less, add transparency tuning. Show the modified code block only.”</li>
             </ul>
-            <p>The data comes from the San Francisco Department of Public Health's restaurant inspection database, which is publicly available through the city's open data portal.</p>
+            <p>Gemini’s initial output successfully generated the overall Folium mapping structure (map setup, marker coloring, and popups), but in early versions I noticed two practical issues:</p>
+            <li>Some popups/tooltips displayed literal NaN text when fields were missing.</li>
+            <li>Some popups/tooltips displayed literal NaN text when fields were missing.</li>
+            <p>Those issues pushed me to refine the pipeline by filtering out invalid rows and improving popup formatting, then adding a marker limit and clustering strategy to keep the map readable.</p>
+
+            <h3>Vibe Coding Guidelines/Reflection</h3>
+            <p>When using AI for Python and visualization tasks, I treat it as a collaborator rather than a pure code generator. I start by defining the goal and output features clearly in my prompt, including visual behavior and data-cleaning requirements. After AI generates code, I run it in small sections and verify outputs step by step, especially with maps where visual errors reveal data issues quickly. I document where code works but my understanding is partial, and I make comments marking what I fully understand versus what I only understand briefly. When results look wrong, such as NaN popups or overcrowded markers, I follow up with AI with specific problems instead of asking for a total rewrite. I also keep make sure I check the output myself for validation, filtering rules, and labeling decisions.</p>
         </section>
     </main>
 
