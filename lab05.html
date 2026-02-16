@@ -89,8 +89,11 @@
                 <li><strong>Decluttering prompt (overlapping markers):</strong> “The map is too visually cluttered because there are too many markers overlapping. Please refactor my code to reduce clutter while keeping it analytically useful. Update it to keep only the latest inspection per restaurant, limit to the top N most recent or lowest-score inspections (config variable like MAX_MARKERS), keep MarkerCluster but improve readability, reduce marker radius scaling so circles overlap less, add transparency tuning. Show the modified code block only.”</li>
             </ul>
             <p>Gemini’s initial output successfully generated the overall Folium mapping structure (map setup, marker coloring, and popups), but in early versions I noticed two practical issues:</p>
-            <li>Some popups/tooltips displayed literal NaN text when fields were missing.</li>
-            <li>Some popups/tooltips displayed literal NaN text when fields were missing.</li>
+            <ul>
+                <li>Some popups/tooltips displayed literal NaN text when fields were missing.</li>
+                <li>Some rows with no values were plotted.</li>
+                <li>The map was visually cluttered due to heavy marker overlap.</li>
+            </ul>
             <p>Those issues pushed me to refine the pipeline by filtering out invalid rows and improving popup formatting, then adding a marker limit and clustering strategy to keep the map readable.</p>
 
             <h3>Vibe Coding Guidelines/Reflection</h3>
