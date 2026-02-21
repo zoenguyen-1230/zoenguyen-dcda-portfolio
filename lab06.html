@@ -24,31 +24,55 @@
 
 <main>
         <section>
-            <h2>Header</h2>
+            <h2>Interactive Map</h2>
+            <p>Explore the interactive map below to see a curated collection of my favorite places in New York City. Each location is symbolized by category, including restaurants, parks, cultural sites, and local businesses, and layered over my custom Art Deco–inspired Mapbox basemap.</p>
+
+            <p>The darker basemap and gold-accented road network are designed to emphasize structure and hierarchy, while keeping the focus on the markers themselves. Click on any marker to view the location’s name, a personal description of why it matters to me, and an image that captures the space. Use the zoom and pan tools to explore neighborhoods more closely.</p>
             
-            <h3>Header</h3>
-            <p>Paragraph</p>
+            <div class="viz-container">
+                <iframe 
+                    src="hometown_map.html" 
+                    title="Hometown Map of New York City"
+                    style="width: 100%; height: 600px; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                    loading="lazy">
+                </iframe>
+                <figcaption>Interactive map of my favorite New York City locations, built with Python and styled using a custom Art Deco Mapbox basemap. Click markers to view images and personal reflections.</figcaption>
+            </div>
 
-            <p>Paragraph</p>
+            <a href="nyc_hometown_locations.csv" download>
+                    Download the csv file (.csv)
+                </a>
+                &nbsp;|&nbsp;
+                <a href="hometown_map.py" target="_blank">
+                    View the Python file (.py)
+                </a>
+            </section>
 
-            <h3>Header</h3>
-            <p>Paragraph</p>
+            <section>
+            <h2>Reflection</h2>
+            
+            <h3>Design Inspiration</h3>
+            <p>For this lab, I designed my basemap using an Art Deco style inspired by New York City’s iconic architecture. I chose Art Deco because it feels deeply connected to the visual identity of NYC, especially in buildings like the Chrysler Building, Rockefeller Center, and the Empire State Building. I’ve always liked this style for its bold geometry and rich, metallic color palettes. For my map, I decided to reinterpret Art Deco in a darker, more minimalist way. I used deep charcoal tones for land and water and muted gold accents for roads so that labels and icons would stand out clearly. Going darker allowed the text and symbols to feel more prominent without the map becoming too bright or distracting.</p>
+
+            <figure class="viz-container">
+            <img src="images/New-York-Art-Deco.jpg" alt="Vintage Art Deco poster of New York City with bold geometric shapes, gold detailing, and dark navy tones, serving as inspiration for the basemap design."/>
+            <figcaption><strong>Figure 1.</strong> Reference image of Art Deco New York architecture and poster design that informed the dark minimalist palette and gold linear hierarchy in my Mapbox style.</figcaption>
+            </figure>
+            
+            <p><strong>👉 <a href="https://api.mapbox.com/styles/v1/tueminh1230/cmlws9q3g000j01s736tgbbir.html?title=view&access_token=pk.eyJ1IjoidHVlbWluaDEyMzAiLCJhIjoiY21sdHFodDhqMDMwbDNlcHlkM2hveWdxbSJ9.LLQUTNhR_hXomCf2DMBtuw&zoomwheel=true&fresh=true#12/40.7128/-74.006" target="_blank">View the Mapbox style here</a></strong></p>
+
+            <p>Although the assignment suggested creating a hometown map, I chose to map my favorite places in New York City instead. Since my hometown is in Vietnam, it would have been more complicated to geocode addresses and work through potential language formatting issues. NYC is also a city I feel personally connected to and imagine living in long term, so mapping meaningful places there felt more authentic and motivating.</p>
+
+            <h3>Cartographic Challenges</h3>
+            <p>The biggest cartographic challenge was deciding which colors belonged on which layers. I wanted strong contrast, but not so much that the map felt overwhelming. I needed to ensure readability while keeping the Art Deco mood through constant adjustments and testing. Another challenge was preventing visual clutter. Many places in NYC are close together, especially in Manhattan, so icons can easily overlap. I had to carefully adjust marker size and selectively choose which icons to display to avoid overcrowding.</p>
+
+            <h3>Technical Challenges</h3>
+            <p>The technical challenge was building the interactive map in Python, since I haven’t used Python extensively before. I used <strong>Claude Opus 4.5</strong> inside VS Code to assist with structuring the code. To make the process smoother, I prepared my CSV file carefully and clearly outlined every feature I wanted in the map before prompting AI. Once the base map worked, I tested it visually and then asked the AI to help add features like a legend to make it easier to understand. AI helped accelerate the coding process, but I still needed to review, test, and refine each part to make sure it matched my design vision.</p>
+
+            <p>This lab helped me connect aesthetic design choices with technical implementation, and it pushed me to think about how visual storytelling and code can work together. More than just completing a technical task, this assignment gave me a creative way to share something personal. By mapping my favorite places in New York City, I wasn’t just plotting coordinates; I was telling a story about spaces that matter to me. The restaurants, parks, museums, and small local businesses on my map represent moments, memories, and parts of my life in this city. Designing the basemap in an Art Deco style made the project feel even more connected to the city itself, since that style reflects New York’s architectural identity. It allowed me to combine design, data, and personal narrative into one interactive experience. This assignment felt like building something meaningful that I would actually want to show others. It also made me realize how maps can function not just as tools for navigation, but as creative platforms for storytelling and identity.</p>
 
         </section>
 
-        <section>
-
-            <h2>Header</h2>
-            <h3>Header</h3>
-            <p>Paragraph</p>
-
-            <p>Paragraph</p>
-
-            <h3>Header</h3>
-            <p>Paragraph</p>
-
-            <p>Paragraph</p>
-        </section>
     </main>
 
     <footer>
