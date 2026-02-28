@@ -23,10 +23,35 @@
     </header>
 
     <main>
+      <!-- =========================
+     LAB 4 SYNOPSIS (CALLOUT)
+     Purpose: Quickly explain what Lab 4 required and what this Tableau story shows.
+     Styled with .lab-synopsis so visitors can skim context before diving into the reflection.
+     ========================= -->
+<section class="lab-synopsis">
+  <h2>Lab 4 Synopsis</h2>
+  <p>
+    In Lab 4, I used Tableau Public to build a short, story-driven visualization using a real dataset. I selected a California county
+    foreign-born demographics dataset (ACS-based) and created a small set of coordinated views (map + composition chart + scatterplot)
+    to explore how immigrant population patterns relate to economic outcomes like median income. The final Tableau Story is embedded
+    below, followed by my written reflection and analysis.
+  </p>
+</section>
+<!-- =========================
+             TABLEAU STORY EMBED
+             This section embeds my published Tableau Public Story directly into the portfolio.
+             The embed is wrapped in .tableau-embed so the visualization stays responsive.
+             ========================= -->
   <section class="tableau-section">
     <h2>Immigrant Population Patterns and County Economic Outcomes in California</h2>
-    <p class="viz-caption">Comparing immigrant population share, birthplace composition, and median income across California counties.</p>
+                <!-- Short intro text: tells visitors what the story is comparing before they scroll into the viz -->
 
+    <p class="viz-caption">Comparing immigrant population share, birthplace composition, and median income across California counties.</p>
+  <!-- =========================
+                 RESPONSIVE EMBED WRAPPER
+                 Purpose: prevent the Tableau viz from overflowing the content container.
+                 This wrapper is paired with CSS rules in styles.css under "Tableau Responsive Embed Fix".
+                 ========================= -->
     <div class="tableau-embed">
         <div class='tableauPlaceholder' id='viz1770497299958' style='position: relative; width: 100%;'>
         <noscript>
@@ -36,7 +61,11 @@
               style='border: none' />
           </a>
         </noscript>
-
+ <!-- =========================
+                         OBJECT TAG (TABLEAU VIZ SETTINGS)
+                         These <param> values tell Tableau which Story to load and how to display it.
+                         For example: tabs=no hides worksheet tabs; toolbar=yes shows the toolbar.
+                         ========================= -->
         <object class='tableauViz' style='display:none;'>
           <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
           <param name='embed_code_version' value='3' />
@@ -69,7 +98,11 @@
 
         <section>
             <h2>Reflection and Analysis</h2>
-
+ <!-- =========================
+             REFLECTION AND ANALYSIS
+             This section contains the full written response required for the lab write-up.
+             I’m keeping it on the same page so the portfolio shows both artifact + analysis together.
+             ========================= -->
             <h3>Data Preparation</h3>
             <p>I intentionally chose a California county foreign-born demographics dataset because immigration, culture, and population patterns are topics I already care about and study through my communication and digital culture coursework. The dataset includes county-level measures of foreign-born population share, birthplace composition, income, broadband access, and employment indicators, which made it well suited for exploratory visual analysis with multiple meaningful metrics and dimensions. I selected it specifically because it allowed me to connect demographic structure with economic outcomes rather than just visualize totals.</p>
 

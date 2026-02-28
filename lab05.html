@@ -22,6 +22,24 @@
     </header>
 
 <main>
+     <!-- =========================
+             LAB 5 SYNOPSIS (CALLOUT)
+             Purpose: Summarize the lab requirements + what I built with AI assistance.
+             Styled with .lab-synopsis so the context is easy to skim.
+             ========================= -->
+        <section class="lab-synopsis">
+            <h2>Lab 5 Synopsis</h2>
+            <p>
+                Lab 5 focused on “vibe coding,” or using AI as a coding collaborator while still keeping track of understanding and responsibility.
+                I completed two experiments: (A) enhancing my portfolio with an image carousel using Claude inside VS Code, and (B) generating
+                Python code in Google Colab (with Gemini) to build an interactive map visualization. I documented prompts, debugging steps,
+                and what I understood vs. what I still needed to learn.
+            </p>
+        </section>
+         <!-- =========================
+             EXPERIMENT A
+             Purpose: Describe the portfolio enhancement feature + document my AI collaboration + debugging.
+             ========================= -->
         <section>
             <h2>Experiment A: Portfolio Enhancement</h2>
             <p>For Experiment A, I used <strong>Claude Opus 4.5</strong> as a coding collaborator inside VS Code to build a <strong>responsive image carousel</strong> for my portfolio. The carousel displays photos of my friends and me at TCU to highlight my campus experience. The feature includes <strong>next/previous buttons</strong>, <strong>dot navigation</strong>, <strong>keyboard arrow support</strong>, and <strong>accessible alt text</strong>.</p>
@@ -29,6 +47,11 @@
             <p>I started with a broad “build a carousel” prompt, then refined it through debugging. The first version overflowed its container and only displayed the first image. I worked with Claude to adjust the CSS while I also manually corrected image filenames/paths and rewrote alt text so it matched my actual photos. After several rounds of feedback and testing, I successfully implemented a fully functional carousel that enhances the visual appeal and user experience of my portfolio. The final code is clean, well-commented, and adheres to best practices for responsive design and accessibility.</p>
 
       <h3>Screenshot / Demo</h3>
+       <!-- =========================
+                 SCREENSHOTS (PROCESS EVIDENCE)
+                 These screenshots document my AI prompts and debugging steps.
+                 Using figures makes the artifacts easy to reference.
+                 ========================= -->
       <p>Screenshot of the carousel implementation process, showcasing the conversation with Claude Opus 4.5 and the resulting code snippets that led to the successful enhancement of my portfolio:</p>
       <figure class="viz-container">
         <img src="images/Chat 1.png" alt="Screenshot of my first prompt asking AI to build an image carousel"/>
@@ -50,12 +73,25 @@
       <h3>Screenshot / Demo</h3>
 
       <h3>Vibe Coding Guidelines/Reflection</h3>
+       <!-- =========================
+                 VIBE CODING GUIDELINES (Experiment A)
+                 Purpose: Document how I used AI responsibly, including planning, testing, and honesty about understanding.
+                 ========================= -->
       <p>When I used AI for vibe coding, I try to treat it as a collaborator rather than an autopilot. I start by planning the feature first and listing the exact behaviors and constraints I want, so my prompt is specific enough and make room for less errors. After the AI generates code, I read through every section before running it, and I test it section by section so I can see which changes actually affect the result. I use an “understanding spectrum” in my comments to honestly mark what I fully understand, what I understand at a logic level, and what I still find unclear. When something breaks, I debug step by step, from checking file paths, layout rules, to data flow, instead of assuming the whole solution is wrong. I also make content-level corrections myself, such as updating image names, paths, and alt text, to ensure accuracy and accessibility. Overall, my guideline is to let AI build the foundation of the code, but keep responsibility for verification, clarity, and final decisions to myself.</p>
         </section>
 
         <section>
-
+    <!-- =========================
+             EXPERIMENT B
+             Purpose: Document Python + mapping workflow in Google Colab using Gemini.
+             Includes notebook + dataset links + embedded final map output.
+             ========================= -->
             <h2>Experiment B: Python Map Visualization (Using Google Colab + Gemini)</h2>
+            <!-- =========================
+                 DOWNLOAD LINKS
+                 Purpose: Provide the “full code” and dataset artifacts as required by the lab.
+                 These links assume the files live in the same portfolio folder (or adjust paths if they’re in /files).
+                 ========================= -->
             <h3>San Francisco Restaurant Inspection Scores Map</h3>
              <p>
                 <a href="San_Francisco_Restaurant_Inspection_Score_Map.ipynb" download>
@@ -73,6 +109,10 @@
             <p>The first AI-generated version worked but revealed practical issues when tested: some popups displayed NaN values, some rows with no values were plotted, and the map was visually cluttered due to heavy marker overlap. I used follow-up prompts to clean the dataset (i.e., dropping missing coordinates and scores), replace missing text fields with “Unknown,” and modify the map to reduce clutter using marker limits, clustering, smaller radius scaling, and transparency tuning. I validated each change by rerunning cells and visually checking the output map rather than assuming correctness from code alone.</p>
 
             <h3>Interactive Map</h3>
+            <!-- =========================
+                 EMBEDDED MAP OUTPUT
+                 This iframe displays the final exported HTML map created in Python (Folium).
+                 ========================= -->
             <p>Explore the map below to see restaurant inspection scores across San Francisco. Click on markers to view restaurant details and their inspection scores:</p>
             
             <div class="viz-container">
@@ -86,6 +126,11 @@
             </div>
 
             <h3>Documentation</h3>
+             <!-- =========================
+                 PROMPT DOCUMENTATION
+                 Purpose: Show the original AI prompts used, as required by the assignment.
+                 Keeping them as list items makes them easy to skim.
+                 ========================= -->
             <p>Original AI prompts I used:</p>
             <ul>
                 <li><strong>Initial build prompt:</strong> “This is a dataset from the City of San Francisco of restaurants' inspection score in the city. help me build a map visualization of the latest inspection per restaurant, colored by inspection score (red → yellow → green). Popup shows name, address, score, date, and risk breakdown. Include a heatmap layer for low scores, and show toggle views of “Best scores” vs “Worst scores” as separate layers.”</li>
@@ -100,6 +145,10 @@
             <p>Those issues pushed me to refine the pipeline by filtering out invalid rows and improving popup formatting, then adding a marker limit and clustering strategy to keep the map readable.</p>
 
             <h3>Vibe Coding Guidelines/Reflection</h3>
+             <!-- =========================
+                 VIBE CODING GUIDELINES (Experiment B)
+                 Purpose: Explain my workflow choices and how I verify AI-generated code outputs.
+                 ========================= -->
             <p>When using AI for Python and visualization tasks, I treat it as a collaborator rather than a pure code generator. I start by defining the goal and output features clearly in my prompt, including visual behavior and data-cleaning requirements. After AI generates code, I run it in small sections and verify outputs step by step, especially with maps where visual errors reveal data issues quickly. I document where code works but my understanding is partial, and I make comments marking what I fully understand versus what I only understand briefly. When results look wrong, such as NaN popups or overcrowded markers, I follow up with AI with specific problems instead of asking for a total rewrite. I also keep make sure I check the output myself for validation, filtering rules, and labeling decisions.</p>
         </section>
     </main>
