@@ -195,6 +195,110 @@ reflects my interests in travel, culture, photography, and nostalgic storytellin
         <p>&copy; 2026 Zoe Nguyen | DCDA 40833 | TCU</p>
     </footer>
 
+    <!-- Spotify Player -->
+    <div class="spotify-player" id="spotify-player">
+        <button class="spotify-toggle" id="spotify-toggle" aria-label="Toggle music player">
+            <span class="spotify-icon">🎵</span>
+            <span class="spotify-close">✕</span>
+        </button>
+        <div class="spotify-embed">
+            <iframe 
+                style="border-radius:12px" 
+                src="https://open.spotify.com/embed/playlist/76n4pdyfsXNgPaX338cELg?utm_source=generator&theme=0" 
+                width="100%" 
+                height="152" 
+                frameborder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- JavaScript for Carousel and Spotify Player -->
+    <script>
+    // Spotify Player Toggle
+    (function() {
+        var player = document.getElementById('spotify-player');
+        var toggle = document.getElementById('spotify-toggle');
+        
+        if (!player || !toggle) return;
+        
+        toggle.addEventListener('click', function() {
+            player.classList.toggle('open');
+        });
+    })();
+
+    // Carousel functionality
+    (function() {
+        var carousel = document.querySelector('.carousel');
+        if (!carousel) return;
+
+        var inner = carousel.querySelector('.carousel-inner');
+        var slides = carousel.querySelectorAll('.carousel-slide');
+        var prevBtn = carousel.querySelector('.carousel-btn-prev');
+        var nextBtn = carousel.querySelector('.carousel-btn-next');
+        var dots = carousel.querySelectorAll('.carousel-dot');
+        var currentIndex = 0;
+        var totalSlides = slides.length;
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            
+            currentIndex = index;
+            inner.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+            
+            // Update dots
+            for (var i = 0; i < dots.length; i++) {
+                if (i === currentIndex) {
+                    dots[i].classList.add('active');
+                    dots[i].setAttribute('aria-selected', 'true');
+                } else {
+                    dots[i].classList.remove('active');
+                    dots[i].setAttribute('aria-selected', 'false');
+                }
+            }
+            
+            // Update slides aria-hidden
+            for (var j = 0; j < slides.length; j++) {
+                slides[j].setAttribute('aria-hidden', j !== currentIndex);
+            }
+        }
+
+        // Button listeners
+        prevBtn.addEventListener('click', function() {
+            goToSlide(currentIndex - 1);
+        });
+nextBtn.addEventListener('click', function() {
+            goToSlide(currentIndex + 1);
+        });
+
+        // Dot listeners
+        for (var k = 0; k < dots.length; k++) {
+            dots[k].addEventListener('click', function() {
+                goToSlide(parseInt(this.getAttribute('data-slide')));
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+            if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+        });
+
+        // Initialize
+        for (var m = 0; m < slides.length; m++) {
+            slides[m].setAttribute('aria-hidden', m !== 0);
+        }
+    })();
+    </script>
+    <!-- Footer: Links and copyright -->
+    <footer>
+        <p><a href="https://zoenguyen-1230.github.io/zoenguyen-dcda-portfolio/">View Repository on GitHub</a></p>
+        <p>&copy; 2026 Zoe Nguyen | DCDA 40833 | TCU</p>
+    </footer>
+
 
 </body>
 </html>
