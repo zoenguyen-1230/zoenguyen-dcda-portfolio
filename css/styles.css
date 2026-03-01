@@ -441,7 +441,92 @@ tr:nth-child(even) {
     color: white;
     font-size: 0.75rem;
     font-weight: 600;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.5rem;    // ...existing code...
+    
+    /* ================================
+       FIXED SPOTIFY PLAYER
+       ================================ */
+    
+    .spotify-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .spotify-toggle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #1DB954, #1ed760);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        font-size: 1.5rem;
+    }
+    
+    .spotify-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(29, 185, 84, 0.5);
+    }
+    
+    .spotify-toggle .spotify-icon {
+        display: block;
+    }
+    
+    .spotify-toggle .spotify-close {
+        display: none;
+        color: white;
+        font-size: 1.2rem;
+    }
+    
+    .spotify-player.open .spotify-toggle .spotify-icon {
+        display: none;
+    }
+    
+    .spotify-player.open .spotify-toggle .spotify-close {
+        display: block;
+    }
+    
+    .spotify-embed {
+        width: 300px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, margin 0.4s ease;
+        margin-top: 0;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .spotify-player.open .spotify-embed {
+        max-height: 160px;
+        margin-top: 10px;
+    }
+    
+    /* Mobile adjustments for Spotify player */
+    @media (max-width: 480px) {
+        .spotify-player {
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .spotify-toggle {
+            width: 45px;
+            height: 45px;
+            font-size: 1.3rem;
+        }
+        
+        .spotify-embed {
+            width: 260px;
+        }
+    }
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
