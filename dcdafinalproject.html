@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Long Distance App | MVP Prototype</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <h1>Long Distance Connection App (MVP)</h1>
+      <p>Prototype: emotional presence + shared routines + intentional interaction.</p>
+    </header>
+
+    <section class="card">
+      <h2>1) Login</h2>
+      <form class="grid-2" onsubmit="event.preventDefault(); alert('Logged in (prototype)');">
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Log In</button>
+      </form>
+      <div class="social-row">
+        <button>Connect Google</button>
+        <button>Connect Apple</button>
+        <button>Connect Instagram</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) Add Friends / Partner / Family</h2>
+      <form id="connectionForm" class="grid-3">
+        <input id="connectionName" placeholder="Name" required />
+        <select id="relationshipType" required>
+          <option value="">Relationship Type</option>
+          <option>Partner</option>
+          <option>Friend</option>
+          <option>Family</option>
+        </select>
+        <button type="submit">Add Connection</button>
+      </form>
+      <ul id="connectionList" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>3) Chat (No Calls)</h2>
+      <div class="chat-box" id="chatBox"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" placeholder="Type a message..." required />
+        <button type="submit">Send Text</button>
+        <button type="button" id="sendPhoto">Photo</button>
+        <button type="button" id="sendVoice">Voice Memo</button>
+        <button type="button" id="sendVideo">Video Message</button>
+      </form>
+    </section>
+
+    <section class="card grid-2">
+      <div>
+        <h2>4) Live Status + Mood</h2>
+        <select id="statusSelect">
+          <option>Busy</option>
+          <option>Studying</option>
+          <option>Working Out</option>
+          <option>At Work</option>
+          <option>Free</option>
+        </select>
+        <select id="moodSelect">
+          <option>😊 Happy</option>
+          <option>😌 Calm</option>
+          <option>😴 Tired</option>
+          <option>😟 Stressed</option>
+          <option>💪 Motivated</option>
+        </select>
+        <button id="updatePresence">Update Presence</button>
+        <p id="presenceOut" class="muted"></p>
+      </div>
+
+      <div>
+        <h2>5) Daily Check-in Prompt</h2>
+        <p><strong>Prompt:</strong> How was your day?</p>
+        <textarea id="checkinText" rows="3" placeholder="Share your day..."></textarea>
+        <button id="saveCheckin">Save Check-in</button>
+      </div>
+    </section>
+
+    <section class="card grid-2">
+      <div>
+        <h2>6) Shared Journal / Memory Log</h2>
+        <input id="journalTitle" placeholder="Memory title" />
+        <textarea id="journalBody" rows="3" placeholder="Write a memory..."></textarea>
+        <button id="saveJournal">Add Memory</button>
+        <ul id="journalList" class="list"></ul>
+      </div>
+
+      <div>
+        <h2>7) Countdown to Next Visit</h2>
+        <input id="visitDate" type="date" />
+        <button id="calcCountdown">Calculate</button>
+        <p id="countdownOut" class="muted"></p>
+      </div>
+    </section>
+
+    <section class="card grid-2">
+      <div>
+        <h2>8) Time Capsule</h2>
+        <textarea id="capsuleMessage" rows="3" placeholder="Message for later..."></textarea>
+        <input id="capsuleDate" type="date" />
+        <button id="saveCapsule">Save Time Capsule</button>
+      </div>
+
+      <div>
+        <h2>9) Shared Calendar</h2>
+        <input id="eventTitle" placeholder="Event title" />
+        <input id="eventDate" type="date" />
+        <button id="saveEvent">Add Event</button>
+        <ul id="eventList" class="list"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>10) Date Night Idea Generator</h2>
+      <button id="genIdea">Generate Idea</button>
+      <p id="ideaOut" class="muted"></p>
+    </section>
+
+    <section class="card">
+      <h2>11) Drop a Moment (Live Update)</h2>
+      <form id="momentForm" class="chat-form">
+        <input id="momentInput" placeholder="What are you doing right now?" required />
+        <button type="submit">Drop Moment</button>
+      </form>
+      <ul id="momentList" class="list"></ul>
+    </section>
+  </main>
+
+  <script>
+    // lightweight prototype interactions
+    const connectionForm = document.getElementById('connectionForm');
+    const connectionList = document.getElementById('connectionList');
+    connectionForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('connectionName').value.trim();
+      const type = document.getElementById('relationshipType').value;
+      if (!name || !type) return;
+      const li = document.createElement('li');
+      li.textContent = `${name} (${type})`;
+      connectionList.prepend(li);
+      connectionForm.reset();
+    });
+
+    const chatBox = document.getElementById('chatBox');
+    document.getElementById('chatForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+      const p = document.createElement('p');
+      p.textContent = `You: ${msg}`;
+      chatBox.appendChild(p);
+      input.value = '';
+    });
+    ['sendPhoto','sendVoice','sendVideo'].forEach(id => {
+      document.getElementById(id).addEventListener('click', () => {
+        const p = document.createElement('p');
+        p.textContent = `You sent a ${id.replace('send','').toLowerCase()} (prototype).`;
+        chatBox.appendChild(p);
+      });
+    });
+
+    document.getElementById('updatePresence').addEventListener('click', () => {
+      const s = document.getElementById('statusSelect').value;
+      const m = document.getElementById('moodSelect').value;
+      document.getElementById('presenceOut').textContent = `Status: ${s} | Mood: ${m}`;
+    });
+
+    document.getElementById('saveJournal').addEventListener('click', () => {
+      const title = document.getElementById('journalTitle').value.trim();
+      const body = document.getElementById('journalBody').value.trim();
+      if (!title && !body) return;
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${title || 'Untitled'}</strong><br>${body}`;
+      document.getElementById('journalList').prepend(li);
+      document.getElementById('journalTitle').value = '';
+      document.getElementById('journalBody').value = '';
+    });
+
+    document.getElementById('calcCountdown').addEventListener('click', () => {
+      const date = document.getElementById('visitDate').value;
+      if (!date) return;
+      const now = new Date();
+      const target = new Date(date + 'T00:00:00');
+      const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+      document.getElementById('countdownOut').textContent =
+        diff >= 0 ? `${diff} day(s) until your next visit.` : 'That date has passed.';
+    });
+
+    document.getElementById('saveEvent').addEventListener('click', () => {
+      const title = document.getElementById('eventTitle').value.trim();
+      const date = document.getElementById('eventDate').value;
+      if (!title || !date) return;
+      const li = document.createElement('li');
+      li.textContent = `${date}: ${title}`;
+      document.getElementById('eventList').prepend(li);
+      document.getElementById('eventTitle').value = '';
+      document.getElementById('eventDate').value = '';
+    });
+
+    const ideas = [
+      'Cook the same recipe together and eat on video.',
+      'Pick a country and plan a dream trip mood board.',
+      'Watch the same movie and do a voice-note review.',
+      'Send each other a 5-photo “today in my life” story.',
+      'Do a shared journal prompt and compare answers.'
+    ];
+    document.getElementById('genIdea').addEventListener('click', () => {
+      const idea = ideas[Math.floor(Math.random() * ideas.length)];
+      document.getElementById('ideaOut').textContent = idea;
+    });
+
+    document.getElementById('momentForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('momentInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const li = document.createElement('li');
+      li.textContent = `${new Date().toLocaleTimeString()}: ${text}`;
+      document.getElementById('momentList').prepend(li);
+      input.value = '';
+    });
+  </script>
+</body>
+</html>
